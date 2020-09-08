@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import {BACKEND_URL} from '../config'
+
 
 // Single Exercise Component
 const Exercise = (props) => {
@@ -33,7 +35,7 @@ export default class ExercisesList extends Component {
     };
   }
   componentDidMount(){
-    axios.get('http://localhost:5000/exercises/')
+    axios.get(BACKEND_URL + 'exercises/')
       .then(response => {
         this.setState({
           exercises: response.data
@@ -45,7 +47,7 @@ export default class ExercisesList extends Component {
       })
   }
   deleteExercise(id) {  
-    axios.delete('http://localhost:5000/exercises/'+id)  
+    axios.delete(BACKEND_URL + 'exercises/'+id)  
     .then(res => console.log(res.data)); 
     this.setState({  
     exercises: this.state.exercises.filter(exercise => exercise._id !== id)  
