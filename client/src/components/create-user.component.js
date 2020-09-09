@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import axios from 'axios'
+import axios from 'axios';
 import {BACKEND_URL} from '../config'
 
 
@@ -9,7 +9,7 @@ export default class CreateUser extends Component {
     this.onChangeUsername = this.onChangeUsername.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.state = {
-      username: ""
+      username: ''
     }
   }
   onChangeUsername(e){
@@ -19,38 +19,38 @@ export default class CreateUser extends Component {
   }
   onSubmit(e){
     e.preventDefault();
-    const newUser = {
+    const newUser= {
       username: this.state.username
     }
     console.log(newUser);
- 
-    axios.post(BACKEND_URL + 'users/add' , newUser)
-    .then((res) => {
-        console.log(res.data)
-    });
+
+    axios.post(BACKEND_URL + "/users/add", newUser)
+    .then((res)=> {console.log(res.data)})
     this.setState({
       username: ''
     })
   }
+  
+  
   render() {
     return (
       <div>
-       <h3>Create New User</h3>
-       <form onSubmit={this.onSubmit}>
-         <div className="form-group">
-          <label>Username: </label>
+        <h3>Create New User</h3>
+        <form onSubmit={this.onSubmit}>
+        <div className="form-group">
+            <label> Usernam: </label>
             <input 
             required
-            type="text"
-            className='form-control'
-            value={this.state.username}
+             type="text"
+            className="form-control"
+            value = {this.state.username}
             onChange={this.onChangeUsername}
             />
-          </div>  
-          <div className="form-group">
-            <input type="submit" value="create user" className="btn btn-primary"/>
-          </div>
-       </form>
+      </div>
+      <div className="form-group">
+          <input type="submit" value="create user" className="btn btn-primary"/>
+      </div>
+      </form>
       </div>
     )
   }
