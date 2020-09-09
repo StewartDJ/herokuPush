@@ -29,3 +29,17 @@ app.use('/exercises', exerciseRouter)
 app.listen(port, () => {
 console.log(`server is running on port: ${port}`)
 })
+
+
+app.get('*', function (req, res) {
+    res.sendFile(__dirname + '/client/build/index.html', function (err) {
+      if (err) {
+        res.status(500).send(err);
+      }
+    });
+  });
+  
+  
+  
+  app.listen(port, () => {
+      console.log(`server is running on port: ${port}`)
