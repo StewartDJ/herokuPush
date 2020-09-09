@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import {BACKEND_URL} from '../config'
-
-
 // Single Exercise Component
 const Exercise = (props) => {
   return (
@@ -16,7 +13,7 @@ const Exercise = (props) => {
       <td>
         <Link to={"/edit/" + props.exercise._id}>edit</Link>|{" "}
         <a 
-        href="#"
+        href="/"
         onClick={() =>{props.deleteExercise(props.exercise._id)}}
         >
           delete
@@ -29,8 +26,8 @@ const Exercise = (props) => {
 export default class ExercisesList extends Component {
   constructor(props){
     super(props)
-    this.deleteExercise = this.deleteExercise.bind(this) //bind attatches this to instance that is being called
-    this.state= {
+    this.deleteExercise = this.deleteExercise.bind(this)
+    this.state={
       exercises: []
     };
   }
